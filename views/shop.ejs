@@ -1,0 +1,41 @@
+<%- include('includes/head.ejs') %>
+    </nav>
+    <main>
+
+      <div class="mx-auto row row-cols-1 row-cols-md-2 g-4" >
+      <% for ( let product of prods ) { %>
+            <div class="card ms-3 md-3 mt-5" style="width: 250px;">
+              <img src="/<%= product.imageURL %>" class="mt-3 card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><%= product.title %></h5>
+                <p class="card-text">Price: <%= product.price %></p>
+                <p class="card-text"><%= product.description %></p>
+                <div>
+                  <a href="/products/<%= product._id %>" class="btn btn-sm btn-outline-primary">Details</a>
+                  <% if (isAuthenticated) { %>
+                  <span >
+                    <a href="/products/addToCart/<%= product._id %>" class="btn btn-sm btn-outline-info ms-4 " >Add to Cart</a>
+                  </span>
+                  <% } %>
+                </div>
+                <% let time= ((new Date() - product.Date)/1000) < 60 ? `${Math.floor((new Date() - product.Date)/1000)} Seconds` : `${Math.floor((new Date() - product.Date)/60000)} Minutes` %>
+              <% if(((new Date() - product.Date)/60000)>60) time= `${Math.floor((new Date() - product.Date)/3600000)} hours` %>
+              <% if(((new Date() - product.Date)/3600000)>24) time= `${Math.floor((new Date() - product.Date)/(3600000*24))} day(s)` %>
+
+                <p class="card-text"><small class="text-muted">Last updated <%= time %> ago</small></p>
+              </div>
+            </div>
+        <% } %>
+        
+      </div>
+      <!-- <div class="mt-4" style="text-align: center;">
+        <a class="btn btn-primary ms-2 btn-outline-light" 
+        style="border: 0.1rem solid blue;" 
+        href="?page1" role="button">1</a>
+        <a class="btn btn-primary ms-2 btn-outline-light" 
+        style="border: 0.1rem solid blue;" 
+        href="?page2" role="button">2</a>
+      </div> -->
+    </main>
+    <%- include('includes/end.ejs') %>
+

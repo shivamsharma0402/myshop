@@ -1,0 +1,31 @@
+<%- include('../includes/head.ejs') %>
+    </nav>
+    <main class="mx-auto mt-5 main-login">
+      <form action="/login" method="POST">
+          <div class="mx-auto" style="width: 400px;">
+          <h3 class="mt-4 mb-3">Login</h3>
+          <!-- <label class=" ms-1 mt-2" for="email">Enter Email-id</label> -->
+        <div class="input-group mb-3">
+          <input type="text" class="mt-2 form-control" name="email" placeholder="Enter Email-Id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class=" mt-2 form-control" name="password" placeholder="Enter password"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <% if(errorMessage) { %>
+          <div class="input-group" style="align-items: center;">
+            <p style="color: red; width: 100%; border: 1px solid rgb(241, 109, 109); border-radius: 5px; text-align: center; background-color: rgb(255, 176, 176)"><%= errorMessage %></p>
+          <!-- <input type="password" class=" mt-2 form-control" name="password" placeholder="Enter password"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+        </div>
+        <% } %>
+        <div class="input-group" >
+          <p style="text-align: right; width: 100%"><a href="/resetPassword">Forgot Password?</a></p>
+        </div>
+        <!-- <div class="position-absolute start-50 translate-middle"> -->
+          <div class="input-group mt-1 mb-3" >
+            <button type="submit" class="btn btn-primary mt-2 " style="margin: auto;">LOGIN</button>
+          </div>
+        <!-- </div> -->
+          </div>
+      </form>
+    </main>
+    <%- include('../includes/end.ejs') %>

@@ -1,0 +1,26 @@
+<%- include('../includes/head.ejs') %>
+    </nav>
+        <main>
+            <% if (orders.length <= 0) { %>
+                <h1 class="ms-3 mt-3">Nothing there!</h1>
+            <% } else { %>
+                <ul class="orders">
+                    <% orders.forEach(order => { %>
+                      <div class="card mx-auto mt-4" style="width: 1200px; border: solid 1px rebeccapurple; box-shadow: 0 0 1rem rebeccapurple;">
+                        <div class="card-body justify-content-start">
+                          <h5 class="card-title">Order - # <%= order._id %> - <a href="/orders/<%=order._id %>">Invoice</a></h5>
+                          <hr>
+                          <% order.products.forEach(p => { %>
+                            <hr>
+                            <div class="d-flex justify-content-start">
+                            <h6 class="card-title"><%= p.product.title %></h6>
+                            <h7 class="ms-4"> (Quantity: <%= p.quantity %>)</h7>
+                          </div>
+                            <% }); %>
+                        </div>
+                      </div>
+                    <% }); %>
+                </ul>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>

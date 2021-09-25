@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+    </nav>
+        <main>
+            <% if (products.length > 0) { %>
+                <ul class="cart__item-list">
+
+                    <% products.forEach(p => { %>
+                      
+                        <!-- <li class="cart__item mx-auto"> -->
+                            <div class="card w-50 mt-4 mx-auto ">
+                                <div class="card-body d-flex justify-content-between">
+                                  <h4 class="card-title"><%= p.ProductId.title%></h4>
+                                    <h5 class="card-title">Quantity: <%= p.quantity%></h5>
+                                    <a href="/cart-delete-item/<%=p.ProductId._id%>" class="btn btn-danger">Delete</a>
+                                </div>
+                              </div>
+                              
+                     
+                    <% }) %>
+                </ul>
+                <hr>
+                <div class="centered d-flex justify-content-center">
+                    <form action="/create-order" method="POST">
+                        <button type="submit" class="btn btn-success btn-lg ">Order Now!</button>
+                    </form>
+                </div>
+                
+            <% } else { %>
+                <h1 class="ms-3 mt-4">No Products in Cart!</h1>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>

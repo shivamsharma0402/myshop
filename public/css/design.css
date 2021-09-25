@@ -1,0 +1,52 @@
+.invalid{
+  border: solid 1px red; 
+  box-shadow: 0 0 0.5rem red;
+}
+
+.main-signup {
+  border: solid 1px rebeccapurple; 
+  box-shadow: 0 0 1rem rebeccapurple;
+  width: 450px;
+  align-items: center;
+  align-content: center;
+  margin-top: 20px;
+  border-radius: 15px;
+  /* height: 360px; */
+}
+
+
+.main-login {
+  border: solid 1px rebeccapurple; 
+  box-shadow: 0 0 1rem rebeccapurple;
+  width: 450px;
+  align-items: center;
+  align-content: center;
+  margin-top: 20px;
+  border-radius: 15px;
+  /* height: 320px; */
+}
+
+.main-reset1 {
+  border: solid 1px rebeccapurple; 
+  box-shadow: 0 0 1rem rebeccapurple;
+  width: 450px;
+  align-items: center;
+  align-content: center;
+  margin-top: 20px;
+  border-radius: 15px;
+  /* height: 320px; */
+}
+
+
+.main-reset2 {
+  border: solid 1px rebeccapurple; 
+  box-shadow: 0 0 1rem rebeccapurple;
+  width: 450px;
+  align-items: center;
+  align-content: center;
+  margin-top: 20px;
+  border-radius: 15px;
+  /* height: 320px; */
+}
+
+/* <%= validationErrors.find(e=> e.param === 'password') ? 'invalid' : '' %> */

@@ -1,0 +1,30 @@
+<%- include('../includes/head.ejs') %>
+    </nav>
+    <main class="mx-auto mt-5 main-reset1">
+      <form action="/resetPassword/" method="POST">
+        <div class="mx-auto" style="width: 400px;">
+          <h3 class="mt-4 mb-3">Reset Password</h3>
+        <div class="input-group ">
+          <input type="text" class=" mt-2 mb-5 form-control" name="email" placeholder="Enter Email-Id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="position-absolute start-50 translate-middle">
+          <div class="input-group mb-3">
+            <button type="submit" class="btn btn-primary">SendLink</button>
+          </div>
+        </div>
+         
+        <div class="input-group " >
+          <p class="mt-3" style=" color: rgb(59, 187, 59); width: 100%; text-align: center; ">Reset Password link will be sent to this email</p>
+        </div>
+        <% if(errorMessage) { %>
+          <div class="input-group mb-3" style="align-items: center;">
+            <p style="color: red; width: 100%; border: 1px solid rgb(241, 109, 109); border-radius: 5px; text-align: center; background-color: rgb(255, 176, 176)"><%= errorMessage %></p>
+        </div>
+        <% } %>
+      </div>
+      </form>
+    </main>
+
+    <!--  border: 1px solid rgb(193, 202, 193); border-radius: 5px;  background-color: rgb(129, 250, 129) -->
+    <%- include('../includes/end.ejs') %>

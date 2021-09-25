@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %>
+    </nav>
+    <main class="mx-auto mt-5 main-signup">
+      <form action="/signup" method="POST">
+          <div class="mx-auto" style="width: 400px;">
+            <h3 class="mt-4 mb-3">Sign Up</h3>
+        <div class="input-group mb-3">
+          <input type="text" 
+          class=" mt-2 form-control <%= validationErrors.find(e=> e.param === 'email') ? 'invalid' : '' %> " 
+          name="email" 
+          value="<%=oldDetails.email%>" 
+          placeholder="Enter E-mail" 
+          aria-label="Sizing example input" 
+          aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3 ">
+          <input type="password" 
+          class=" mt-3 form-control <%= validationErrors.find(e=> e.param === 'password') ? 'invalid' : '' %>" 
+          value="<%=oldDetails.password%>" 
+          name="password" 
+          placeholder="Enter password"  
+          aria-label="Sizing example input" 
+          aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3 ">
+          <input type="password" 
+          class=" mt-3 form-control <%= validationErrors.find(e=> e.param === 'confirmPassword') ? 'invalid' : '' %> " 
+          value="<%=oldDetails.confirmPassword%>" 
+          name="confirmPassword" 
+          placeholder="Confirm password"  
+          aria-label="Sizing example input" 
+          aria-describedby="inputGroup-sizing-default">
+        </div>
+        <% if(errorMessage) { %>
+          <div class="input-group mb-1" style="align-items: center;">
+            <p style="color: red; width: 100%; border: 1px solid rgb(241, 109, 109); border-radius: 5px; text-align: center; background-color: rgb(255, 176, 176)"><%= errorMessage %></p>
+          </div>
+          <% } %>
+
+          <div class="input-group mt-1 mb-3" >
+            <button type="submit" class="btn btn-primary mt-2 " style="margin: auto;">Sign Up</button>
+          </div>
+          </div>
+      </form>
+    </main>
+    <%- include('../includes/end.ejs') %>
