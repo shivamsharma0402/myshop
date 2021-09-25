@@ -106,7 +106,6 @@ app.use((error, req, res, next) => {
   console.log(error);
   res.redirect("/500");
 });
-console.log(process.env.MONGO_USER, process.env.MONGO_PASSWORD, process.env.MONGO_DEFAULT_DATABASE);
 const MONGO_URI=`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.hfqxk.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
 
 mongoose
