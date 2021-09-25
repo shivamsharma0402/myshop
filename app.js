@@ -17,7 +17,7 @@ const errorController = require("./controllers/error");
 const helmet = require ('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
-
+require('dotenv').config();
 
 var store = new MongoDBStore({
   uri: "mongodb+srv://shivam:Shiv7132@cluster0.hfqxk.mongodb.net/myDatabase?retryWrites=true&w=majority",
