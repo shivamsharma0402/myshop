@@ -14,6 +14,7 @@ exports.getProduct=(req,res,next)=>{
   Product.findById(prodId)
   .then(products=>{
     res.render('shop/product-detail', { 
+      pageTitle: 'Shop Products',
         prods: new Array(products), 
         docTitle: 'shop',
         path:'/products',
@@ -31,6 +32,7 @@ exports.getProducts=(req,res,next)=>{
   Product.find()
   .then(products=>{
     res.render('shop', { 
+      pageTitle: 'Shop Products',
         prods: products, 
         docTitle: 'shop',
         path:'/products',
@@ -50,6 +52,7 @@ exports.getCart = (req, res, next) => {
     .then(user => {
       const products = user.cart.items;
       res.render('shop/cart', {
+        pageTitle: 'Cart Products',
         path: '/cart',
         pageTitle: 'Your Cart',
         products: products,
@@ -96,6 +99,7 @@ exports.getOrders = (req,res,next)=>{
   Order.find({"user.userId":req.user._id})
   .then(orders=>{
     res.render('shop/orders',{
+      pageTitle: 'Orders',
       path:'/orders',
       orders: orders,
       pageTitle:'Your Orders',

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/main.css">
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -12,54 +14,3 @@
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/design.css">
-
-    <title>Shop</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: rebeccapurple;">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            
-            <li class="nav-item">
-              <a class="btn btn-primary ms-2 " href="/" role="button">CLIENT SHOP</a>
-            </li>
-            <% if(isAuthenticated) { %>
-            <li class="nav-item">
-              <a class="btn btn-warning ms-2 " href="/cart" role="button">My Cart</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-light ms-2 " href="/orders" role="button">Orders</a>
-            </li>
-            <% } %>
-          </ul>
-          <% if(isAuthenticated) { %>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            
-            <li class="nav-item">
-              <a class="btn btn-secondary " href="/admin/add-product" role="button">ADD PRODUCT</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-success ms-2 " href="/admin/adminProduct" role="button">Admin Product</a>
-            </li>
-          </ul>
-          <% } %>
-          <div>
-          <ul class="navbar-nav mb-2 mb-lg-0 ">
-            
-            <% if(!isAuthenticated) { %>
-             <li><a class="btn btn-success ms-2 btn-sm" href="/login" role="button">Login</a></li>
-             <li><a class="btn btn-dark ms-2 btn-sm" href="/signup" role="button">SignUp</a></li>
-            <% } else { %>
-            <li>
-              <form class="" action="/logout" method="POST" >
-                <button class="btn btn-danger ms-2 btn-sm" type="submit" role="button">Log out</button>
-              </form>
-            </li>
-            <% } %>
-            </ul>
-          </div>
-        </div>
-        </div>
-

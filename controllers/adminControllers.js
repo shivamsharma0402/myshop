@@ -9,6 +9,7 @@ exports.getEditProduct = (req,res,next)=>{
   Product.findById(prodId)
   .then(product=>{
     res.render('admin/editProduct', { 
+        pageTitle: 'Edit Product',
         editing: true,
         prod: product, 
         docTitle: 'shop',
@@ -32,6 +33,7 @@ exports.getAdminProducts=(req,res,next)=>{
   Product.find({UserId: req.user._id})
   .then(products=>{
     res.render('admin/adminProduct', { 
+      pageTitle: 'Admin Products',
         prods: products, 
         docTitle: 'shop',
         path:'/products',
@@ -58,6 +60,7 @@ exports.updateDB= (req,res,next)=>{
     console.log(errors.array());  
 // console.log(errors.array()[0].msg);
   return res.status(422).render('admin/editProduct',{
+    pageTitle: 'Update Products',
     editing: true,
     pageTitle: 'SHOP',
     path: '/products', 
