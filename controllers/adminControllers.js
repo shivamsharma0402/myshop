@@ -4,45 +4,45 @@ const { validationResult } = require('express-validator/check');
 const fileHelper = require("../util/file");
 
 exports.getEditProduct = (req,res,next)=>{
-
+  
   const prodId = req.params.productId;
   Product.findById(prodId)
   .then(product=>{
     res.render('admin/editProduct', { 
-        pageTitle: 'Edit Product',
-        editing: true,
-        prod: product, 
-        docTitle: 'shop',
-        path:'/products',
-        isAuthenticated: req.session.isLoggedIn,
-        activeAddProduct: true,
-        errorMessage:[],
-        oldDetails: {title: product.title, price: product.price, description: product.description, },
-        validationErrors: [],
+      pageTitle: 'Edit Product',
+      editing: true,
+      prod: product, 
+      docTitle: 'shop',
+      path:'/products',
+      isAuthenticated: req.session.isLoggedIn,
+      activeAddProduct: true,
+      errorMessage:[],
+      oldDetails: {title: product.title, price: product.price, description: product.description, },
+      validationErrors: [],
     });
-    }).catch(err=>{
-      const error = new Error(err);
-      console.log(err);
-      error.httpStatusCode = 500;
-      return next(err);
+  }).catch(err=>{
+    const error = new Error(err);
+    console.log(err);
+    error.httpStatusCode = 500;
+    return next(err);
   });
 };
 
 exports.getAdminProducts=(req,res,next)=>{
-
+  
   Product.find({UserId: req.user._id})
   .then(products=>{
     res.render('admin/adminProduct', { 
       pageTitle: 'Admin Products',
-        prods: products, 
-        docTitle: 'shop',
-        path:'/products',
-        isAuthenticated: req.session.isLoggedIn,
+      prods: products, 
+      docTitle: 'shop',
+      path:'/products',
+      isAuthenticated: req.session.isLoggedIn,
     });
-    }).catch(err=>{
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(err);
+  }).catch(err=>{
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(err);
   });
 };
 
@@ -71,10 +71,10 @@ exports.updateDB= (req,res,next)=>{
     oldDetails: {title: updatedtitle, price: updatedPrice, description: updatedDescription, },
     validationErrors: errors.array(),
   });
-  }
+}
 
-  Product.findOne({_id: prodId, UserId: req.user._id})
-  .then(product=>{
+Product.findOne({_id: prodId, UserId: req.user._id})
+.then(product=>{
     if(product.UserId.toString() !== req.user._id.toString())
       return res.redirect('/');
     console.log('it works');
@@ -105,7 +105,8 @@ exports.getDeleteProduct = (req,res,next)=>{
   prodId = req.params.productId;
   Product.findById(prodId).then(product=>{
     if(!product)
-    return next(new Error('Product not found.'));
+      return next(new Error('Product not found.'));
+    console.log(product.imageURL);
     fileHelper.deleteFile(product.imageURL);
     return Product.deleteOne({_id: prodId, UserId: req.user._id})
 
