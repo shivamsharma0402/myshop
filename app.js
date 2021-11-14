@@ -19,6 +19,13 @@ const compression = require('compression');
 const morgan = require('morgan');
 require('dotenv').config();
 
+const db = require('./util/database');
+
+db.execute('SELECT * FROM products')
+.then(result=>{
+  console.log(result[0]);
+}).catch(err=> console.log(err));
+
 var store = new MongoDBStore({
   uri: "mongodb+srv://shivam:Shiv7132@cluster0.hfqxk.mongodb.net/myDatabase?retryWrites=true&w=majority",
   collection: "mySessions",
@@ -108,12 +115,15 @@ app.use((error, req, res, next) => {
 });
 const MONGO_URI=`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.hfqxk.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
 
-mongoose
-  .connect(MONGO_URI)
-  .then((result) => {
-    console.log("database connected successfully");
-    app.listen(process.env.PORT || 3000);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+
+app.listen(process.env.PORT || 3000);
+
+// mongoose
+//   .connect(MONGO_URI)
+//   .then((result) => {
+//     console.log("database connected successfully");
+//     app.listen(process.env.PORT || 3000);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
